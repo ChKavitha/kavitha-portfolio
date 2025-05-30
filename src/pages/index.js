@@ -78,10 +78,10 @@ export default function Home() {
             <a href="https://github.com/Chkavitha" target="_blank" rel="noreferrer" className="hover:text-white transition">
               <FaGithub />
             </a>
-            <a href="https://linkedin.com/in/kavitha" target="_blank" rel="noreferrer" className="hover:text-white transition">
+            <a href="https://www.linkedin.com/in/KavithaChauhan" target="_blank" rel="noreferrer" className="hover:text-white transition">
               <FaLinkedin />
             </a>
-            <a href="mailto:kavitha@example.com" className="hover:text-white transition">
+            <a href="mailto:kavithachauhan21@gmail.com" className="hover:text-white transition">
               <FaEnvelope />
             </a>
           </div>
@@ -141,7 +141,7 @@ export default function Home() {
 
       <footer className="text-center text-sm text-gray-500 py-8 border-t border-gray-800">
         <div className="flex justify-center gap-6 mb-4">
-          <a href="https://github.com/kavitha" target="_blank" rel="noreferrer" className="hover:text-white transition">
+          <a href="https://github.com/Chkavitha" target="_blank" rel="noreferrer" className="hover:text-white transition">
             <FaGithub className="text-xl" />
           </a>
           <a href="https://www.linkedin.com/in/KavithaChauhan/" target="_blank" rel="noreferrer" className="hover:text-white transition">
