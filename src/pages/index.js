@@ -1,115 +1,158 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaEnvelope, FaExternalLinkAlt } from 'react-icons/fa';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const ProjectCard = ({ title, description, link }) => (
+  <motion.div
+    whileHover={{ scale: 1.03 }}
+    whileTap={{ scale: 0.97 }}
+    className="bg-[#1f2937] rounded-xl p-6 border border-gray-700 hover:border-gray-500 transition"
+  >
+    <h3 className="text-xl font-semibold mb-2">{title}</h3>
+    <p className="text-gray-400 mb-4">{description}</p>
+    <a
+      href={link}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex items-center text-sm text-blue-400 hover:text-blue-200 transition"
+    >
+      View Project <FaExternalLinkAlt className="ml-2 text-xs" />
+    </a>
+  </motion.div>
+);
 
 export default function Home() {
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/pages/index.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main className="min-h-screen bg-[#111827] text-white font-sans scroll-smooth">
+      <nav className="w-full fixed top-0 left-0 bg-[#111827] border-b border-gray-800 z-50">
+        <div className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+          <span className="text-white font-semibold text-lg">Kavitha</span>
+          <div className="space-x-6 text-sm text-gray-400">
+            <a href="#intro" className="hover:text-white transition">Intro</a>
+            <a href="#projects" className="hover:text-white transition">Projects</a>
+            <a href="#blog" className="hover:text-white transition">Blog</a>
+            {/* <a href="#contact" className="hover:text-white transition">Contact</a> */}
+          </div>
+        </div>
+      </nav>
+
+      <section id="intro" className="flex flex-col items-center justify-center px-4 py-32 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col items-center"
+        >
+          <Image
+            src="/profile.jpg"
+            alt="Kavitha's photo"
+            width={120}
+            height={120}
+            className="rounded-full border border-gray-700 mb-6"
+          />
+          <h1 className="text-3xl md:text-5xl font-bold mb-2">Kavitha Chauhan</h1>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-gray-400 text-base md:text-lg mb-4 max-w-2xl"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+            I’m a Software Development Engineer at Amazon. Previously, I worked as a Data Scientist at Global Payments and as a Machine Learning Analyst at NVIDIA’s graphics division.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-gray-400 text-base md:text-lg mb-4 max-w-2xl"
+          >
+            I’m passionate about designing intelligent systems, and in my free time I enjoy video creation and storytelling.
+          </motion.p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-300 my-6">
+            <span className="flex items-center gap-2 bg-gray-800 px-3 py-1 rounded-full">Python</span>
+            <span className="flex items-center gap-2 bg-gray-800 px-3 py-1 rounded-full">JavaScript</span>
+            <span className="flex items-center gap-2 bg-gray-800 px-3 py-1 rounded-full">C++</span>
+            <span className="flex items-center gap-2 bg-gray-800 px-3 py-1 rounded-full">Machine Learning Models</span>
+            <span className="flex items-center gap-2 bg-gray-800 px-3 py-1 rounded-full">Next.js</span>
+          </div>
+          <div className="flex gap-6 text-gray-400 text-xl mb-4">
+            <a href="https://github.com/Chkavitha" target="_blank" rel="noreferrer" className="hover:text-white transition">
+              <FaGithub />
+            </a>
+            <a href="https://linkedin.com/in/kavitha" target="_blank" rel="noreferrer" className="hover:text-white transition">
+              <FaLinkedin />
+            </a>
+            <a href="mailto:kavitha@example.com" className="hover:text-white transition">
+              <FaEnvelope />
+            </a>
+          </div>
+
+        </motion.div>
+      </section>
+
+      <section id="projects" className="py-24 px-4 max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Projects</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+          
+            <ProjectCard
+              title="Weather App"
+              description="React app using OpenWeather API to show live weather updates."
+              link="https://github.com/ChKavitha/GenAI-Weather-Project"
             />
-            Deploy now
+        
+            <ProjectCard
+              title="Blog Posts"
+              description="Tech thoughts and tutorials shared on Medium."
+              link="https://medium.com/@kavithachauhan21"
+            />
+          </div>
+        </motion.div>
+      </section>
+
+      {/* <section id="contact" className="py-24 px-4 max-w-2xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Contact</h2>
+          <p className="text-gray-400 text-center mb-6">
+            Feel free to reach out for collaborations, project ideas, or just to say hi!
+          </p>
+          <div className="flex justify-center gap-8 text-2xl">
+            <a href="mailto:kavithachauhan21@gmail.com" className="hover:text-blue-400 transition" aria-label="Email">
+              <FaEnvelope />
+            </a>
+            <a href="https://github.com/ChKavitha" target="_blank" rel="noreferrer" className="hover:text-blue-400 transition" aria-label="GitHub">
+              <FaGithub />
+            </a>
+            <a href="https://www.linkedin.com/in/KavithaChauhan" target="_blank" rel="noreferrer" className="hover:text-blue-400 transition" aria-label="LinkedIn">
+              <FaLinkedin />
+            </a>
+          </div>
+        </motion.div>
+      </section> */}
+
+      <footer className="text-center text-sm text-gray-500 py-8 border-t border-gray-800">
+        <div className="flex justify-center gap-6 mb-4">
+          <a href="https://github.com/kavitha" target="_blank" rel="noreferrer" className="hover:text-white transition">
+            <FaGithub className="text-xl" />
           </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+          <a href="https://www.linkedin.com/in/KavithaChauhan/" target="_blank" rel="noreferrer" className="hover:text-white transition">
+            <FaLinkedin className="text-xl" />
+          </a>
+          <a href="mailto:kavithachauhan21@gmail.com" className="hover:text-white transition">
+            <FaEnvelope className="text-xl" />
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        <p>&copy; {new Date().getFullYear()} Kavitha Chauhan. All rights reserved.</p>
       </footer>
-    </div>
+    </main>
   );
 }
